@@ -1,95 +1,105 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Variables
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
-    [SerializeField] private bool  isGrounded;
-    [SerializeField] private float groundCkeckDistance;
-    [SerializeField] private LayerMask groundMask;
-    [SerializeField] private float gravity;
-    [SerializeField] private float jumpHeight;
-
-
-    private Vector3 moveDirection;
-    private Vector3 velocity;
-
-    private CharacterController controller;
+    public float speedX = 4f;
+    public float speedZ = 4f; 
+    private float speedPlayer = 4f;
+    //public float rotationSpeed= 64f;
+    private Rigidbody PhysicJump; //Fisica de Salto
+    public float jumpFoce = 7f; //Fuerza de salto
+    private bool isJump; //Boleano que determina si el jugador esta en pleno salto
+    private float numberJump = 0f;
+    private float maxJump = 1f;
+    public float numberPlayer;
+    //private bool isPause = true;
 
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
-        controller = GetComponent<CharacterController>();   
+        Cursor.lockState = CursorLockMode.Locked; //Bloquea el cursor para que no salga de pantalla
+        Cursor.visible = false; //Pone invisible al cursor del mouse
+        PhysicJump = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
         Move();
+        Jump();
+        Sprint();
     }
 
-    private void Move()
+    void Move()
     {
-        isGrounded = Physics.CheckSphere(transform.position, groundCkeckDistance, groundMask);
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        transform.Translate(new Vector3(horizontal, 0, vertical) * speedPlayer * Time.deltaTime); //Permite mover al jugador
 
-        if(isGrounded &&  velocity.y < 0)
+        /**if(isPause == true)
         {
-            velocity.y = -2f;
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                isPause = false;
+                SceneManager.LoadScene("MenuPausa");
+                Cursor.lockState = CursorLockMode.None; //Habilita el movimiento del cursor
+                Cursor.visible = true; //Pone visible el cursor
+            }
+        }*/
+    }
+
+    //Metodo que permite saltar al jugador
+    void Jump()
+    {
+        if(numberJump > maxJump - 1f)
+        {
+            isJump = false;
         }
-
-        float moveZ = Input.GetAxis("Vertical");
-
-        moveDirection = new Vector3(0, 0, moveZ);
-        moveDirection = transform.TransformDirection(moveDirection);
-
-        if (isGrounded)
+        if(isJump)
         {
-            if (moveDirection != Vector3.zero && !Input.GetKey(KeyCode.LeftShift))
+            if(Input.GetKeyDown(KeyCode.Space))
             {
-                Walk();
-            }
-            else if (moveDirection != Vector3.zero && Input.GetKey(KeyCode.LeftShift))
-            {
-                Run();
-            }
-            else if (moveDirection == Vector3.zero)
-            {
-                Idle();
-            }
-            moveDirection *= moveSpeed;
-
-            if (Input.GetKeyDown(KeyCode.Space)) 
-            {
-                Jump();
+                PhysicJump.AddForce(new Vector3(0,jumpFoce,0), ForceMode.Impulse); //Añade fuerza de salto al jugador
+                numberJump += 1;
             }
         }
+    }
+    
+    void OnCollisionEnter(Collision other) 
+    {
+        isJump = true;
+        numberJump = 0f;
+    }
+    void OnCollisionExit(Collision other) {
         
-        controller.Move(moveDirection * Time.deltaTime);
-
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
     }
-    private void Idle()
+
+    //Metodo que permite al jugador "correr" aplicando mas velocidad
+    void Sprint()
+    {
+        if(Input.GetKey("left shift"))
+        {
+            speedPlayer = 10f;
+        }else{
+            speedPlayer = 4f;
+        }
+    }
+
+    /**private void OnTriggerEnter(Collider other) 
     {
 
     }
-
-    private void Walk()
+    
+    //Metodo que permite reiniciar el juego cuando el jugador se caiga al vacio.
+    void ReiniciarJuego()
     {
-        moveSpeed = walkSpeed;
-    }
-
-    private void Run()
-    {
-
-        moveSpeed = runSpeed;
-    }
-    private void Jump()
-    {
-        velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-    }
+        if(transform.position.y < -25f)
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("SampleScene");
+        }
+    }*/
 }
