@@ -88,12 +88,16 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    /**private void OnTriggerEnter(Collider other) 
+    private void OnTriggerEnter(Collider other) 
     {
-
+        if(other.tag == "Enemy01")
+        {
+            Destroy(gameObject);
+            SceneManager.LoadScene("Nivel1");
+        }
     }
     
-    //Metodo que permite reiniciar el juego cuando el jugador se caiga al vacio.
+    /**Metodo que permite reiniciar el juego cuando el jugador se caiga al vacio.
     void ReiniciarJuego()
     {
         if(transform.position.y < -25f)
