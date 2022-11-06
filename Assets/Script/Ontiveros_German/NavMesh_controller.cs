@@ -7,6 +7,7 @@ public class NavMesh_controller : MonoBehaviour
 {
     public Transform objetivo;
     private NavMeshAgent agent;
+    public float SpeedEnemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,8 @@ public class NavMesh_controller : MonoBehaviour
     void Update()
     {
         agent.destination = objetivo.position;
+        transform.position = Vector3.MoveTowards(transform.position, objetivo.transform.position, SpeedEnemy * Time.deltaTime);
+
         //NAVEGACION MEDIANTE CLICK
         /*
         if (Input.GetMouseButtonDown(0))

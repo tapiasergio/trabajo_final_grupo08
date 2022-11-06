@@ -1343,6 +1343,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objetivo: {fileID: 1209627798}
+  SpeedEnemy: 5
 --- !u!65 &569922034
 BoxCollider:
   m_ObjectHideFlags: 0
