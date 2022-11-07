@@ -93,7 +93,9 @@ public class PlayerMovement : MonoBehaviour
         if(other.tag == "Enemy01")
         {
             Destroy(gameObject);
-            SceneManager.LoadScene("Nivel1");
+            SceneManager.LoadScene("GameOver");
+            Cursor.lockState = CursorLockMode.None; //Habilita el movimiento del cursor
+            Cursor.visible = true; //Pone visible el cursor
         }
     }
     
