@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 74030008}
   - component: {fileID: 74030007}
   - component: {fileID: 74030012}
-  - component: {fileID: 74030013}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -259,28 +258,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &74030013
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 74030006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcc23791b94feb94fbf3ca9f99d818be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 9
-  walkSpeed: 5
-  runSpeed: 200
-  isGrounded: 0
-  groundCkeckDistance: 1
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 64
-  gravity: -9.81
-  jumpHeight: 14
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,7 +363,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -460,19 +436,6 @@ Transform:
   m_Father: {fileID: 74030011}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3942b2753064c5d4ab2665de51f956b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 250
 --- !u!1 &2007702654
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2007702655}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerDummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
