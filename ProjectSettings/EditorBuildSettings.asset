@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayScene.unity
     guid: d5be534024a47194b9a3fdd86c268f8b
+  - enabled: 1
+    path: Assets/Zenteno LaberintoX/tierra del laberinto.unity
+    guid: 6a681d2f5aee2594f81ce96da09db0f5
   m_configObjects: {}
