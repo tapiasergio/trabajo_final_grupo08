@@ -135,6 +135,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 168842815471295516, guid: 0a29524d12ce05c499e40747a2a0b405, type: 3}
+      propertyPath: objetivo
+      value: 
+      objectReference: {fileID: 1786985461}
+    - target: {fileID: 168842815471295516, guid: 0a29524d12ce05c499e40747a2a0b405, type: 3}
+      propertyPath: SpeedEnemy
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1229621839102342920, guid: 0a29524d12ce05c499e40747a2a0b405, type: 3}
       propertyPath: m_Name
       value: EnemyPrefab
@@ -420,6 +428,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1786985461 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1559046828962574183, guid: ca7258620efe4454695c937af5d9fa22, type: 3}
+  m_PrefabInstance: {fileID: 1848201787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1848201787
 PrefabInstance:
   m_ObjectHideFlags: 0
