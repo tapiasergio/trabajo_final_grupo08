@@ -14,12 +14,6 @@ public class GetObject : MonoBehaviour
         {
             other.GetComponentInParent<GetUpObject>().LookObject = this.gameObject;
         }
-
-        //Si el objeto 2 hace contacto con el objeto de tag "ContactObject" se elimina
-        if(other.tag == "ContactObject" && numberPremio == 2)
-        {
-            Destroy(gameObject);
-        } 
     }
 
     private void OnTriggerExit(Collider other) 
@@ -29,10 +23,5 @@ public class GetObject : MonoBehaviour
         {
             other.GetComponentInParent<GetUpObject>().LookObject = null;
         }  
-        //Si el objeto 2 hace sale del contacto con el objeto de tag "ContactObject" se elimina
-        if(other.tag == "ContactObject" && numberPremio == 2)
-        {
-            Destroy(gameObject);
-        } 
     }
 }

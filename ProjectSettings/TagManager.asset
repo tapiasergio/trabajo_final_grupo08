@@ -8,6 +8,13 @@ TagManager:
   - Enemy01
   - enemy
   - ZonaAgarre
+  - Cubo1
+  - Cubo2
+  - Cubo3
+  - SpawnCUbe
+  - SpawnCube2
+  - SpawnCube3
+  - OpenDoor
   layers:
   - Default
   - TransparentFX
