@@ -8,7 +8,7 @@ public class ChangeLevel2 : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player")
         {
-            SceneManager.LoadScene("Nightmare");
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
