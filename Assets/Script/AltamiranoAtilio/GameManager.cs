@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("StageBathroom");
     }
 
+    public void Instructions()
+    {
+        SceneManager.LoadScene("Instrucciones");
+    }
+
     //Metodo que permite salir del juego
     public void Exit()
     {
@@ -26,6 +31,6 @@ public class GameManager : MonoBehaviour
     //Metodo que permite cambiar la escena a MainMenu
     public void ReturnMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("PlayScene");
     }
 }
